@@ -1,0 +1,12 @@
+# configs/attentive_rnn/gla.yaml
+# ─────────────────────────────────────────────────────────────────
+_target_: packages.common.src.common.blocks.gla.AttentiveGLA
+d_model: ${model.d_model}   # inherits main model width
+heads: 8
+n_layer: 6
+dropout_att: 0.1
+expand_k: 0.5
+expand_v: 1.0
+blind: true
+pos_type: convolutional
+use_short_conv: true

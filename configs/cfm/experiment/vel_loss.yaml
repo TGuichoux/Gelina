@@ -1,0 +1,11 @@
+
+# @package _global_
+
+trainer:
+  logger:
+    name: cfm-vel_loss
+
+model:
+  vel_weight: 0.1
+
+  

@@ -1,0 +1,39 @@
+
+# @package _global_
+
+trainer:
+  logger:
+    name: gelina-speech_pt_random-ltts_mls_ggsp-60kt-167M-freeze_motion
+  callbacks:
+    - _target_: pytorch_lightning.callbacks.ModelCheckpoint
+      monitor: val_loss_speech
+      dirpath: checkpoints/pt_speech/${trainer.logger.name}
+      filename: checkpoint_{epoch}_{step}_{val_loss_speech:.4f}
+
+model:
+  freeze:
+    - "model.rvq_embed_motion"
+    - "model.logits_head_motion"
+  loss_weight: {'speech': 1.0, 'motion': 0.0}
+  n_training_steps: 300000
+  n_warmup_steps: 5000
+  pe_mode: 'none'
+  quant_layer_motion: [0]
+  logits_head_motion: 
+    n_quant: 1
+
+
+datamodule:
+  dataset_names: ["mls_nemo", "ltts_hf", "ggsp"]
+  hf_repos: ["", "theodorr/ltts_wavtokenizer", "theodorr/gigaspeech_xl_wavtokenizer"] # no HF path for mls, as loaded in builder function
+  save_dir: YOUR_ROOT_DIR
+  mixing: 'concat'
+  token_by_batch: 60000
+  collate_fn: speech_pt_random # add fake motion tokens
+  selected_columns: ["text","audio_token","audio_duration"] # motion_token are added in collate
+  num_workers: 8
+  quant_layer_motion: [0]
+  val_size: 0.005
+  val_batch_size: 8
+
+

@@ -1,0 +1,21 @@
+# configs/gematcha/datamodule/old_beat_latents.yaml
+_target_: packages.common.src.common.data.latents_dataset.LatentsMotionDataModule
+
+path: ""                        
+rep: rot6d
+hf_repo: TeoGchx/beat_with_latents
+n_frames: 32
+train_batch_size: 128
+val_batch_size: 32
+num_workers: 24
+orig_fps: 30
+target_fps: 20
+dataset_name: beat_latents
+root_path: /data/guichoux/
+shuffle_train: true
+save_processed: true
+shuffle_val: true
+normalize: false
+reload_dataset: false
+normalize_trans: false
+val_split: 0.1

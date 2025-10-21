@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "GelinaProject"
+version = "0.1.0"
+dependencies = [
+  "datasets",
+  "pytorch_lightning",
+  "jsonargparse[omegaconf,signatures]",
+  "wandb",
+  "rotary-embedding-torch",
+  "einops",
+  "transformers[sentencepiece]",
+  "whisper_normalizer",
+  "numpy==1.26.4",
+  "tqdm",
+  "num2words",
+  "smplx",
+  "cython",
+  "pandas",
+  "tabulate",
+  "torchtune",
+  "fasttext",
+  "loguru",
+  "opencv-python",
+  "pyrender",
+  "dotmap",
+  "openai-whisper",
+  "jiwer",
+  "speechbrain",
+  "lmdb",
+  "hydra-core",
+  "soundfile",
+  "librosa",
+  "lightning",
+  "rich",
+  "gdown",
+  "matplotlib",
+  "wget",
+  "conformer==0.3.2",
+  "diffusers",
+  "IPython",
+
+]
+
+[project.optional-dependencies]
+gpu = [
+  "torch==2.7.0+cu118",
+  "torchvision==0.22.0+cu118",
+  "torchaudio==2.7.0+cu118",
+  "torchao",
+  
+]
+
+[tool.setuptools.packages.find]
+include = [
+  "packages",
+  "packages.*",
+  "external",
+  "external.*",
+]
+where = ["."]

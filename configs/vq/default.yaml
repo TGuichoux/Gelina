@@ -1,0 +1,71 @@
+defaults:
+  - datamodule: beat_smpl        # vq/datamodule/beat_smpl.yaml
+  - model: default               # vq/model/default.yaml
+  - _self_
+  - override hydra/hydra_logging: disabled  
+  - override hydra/job_logging: disabled  
+  
+hydra:  
+  output_subdir: null  
+  run:  
+    dir: .
+    
+seed_everything: 3407
+
+# ─────────────────────────── trainer ────────────────────────────
+trainer:
+  _target_: pytorch_lightning.Trainer
+  accelerator: gpu
+  devices: auto
+  max_steps: 500000
+  log_every_n_steps: 1
+  gradient_clip_val: 1.0
+  gradient_clip_algorithm: value
+  val_check_interval: 0.1
+  callbacks:
+    - _target_: pytorch_lightning.callbacks.ModelCheckpoint
+      monitor: val_loss_rec
+      dirpath: /data/guichoux/VQ/checkpoints/${trainer.logger.name}
+      filename: ckpt-{epoch:02d}-{val_loss_rec:.2f}
+      save_last: true
+      save_top_k: 1
+
+  
+  logger:
+    _target_: pytorch_lightning.loggers.WandbLogger
+    project: RVQVAE
+    name: rvqvae_smpl-default
+    save_dir: /data/guichoux/VQ
+
+# ─────────────── lightning-wrapper (TrainVQ) ────────────────────
+model_trainer:
+  _target_: packages.vq.src.vq.vq_trainer.TrainVQ
+  model: ${model}
+
+  # optimizer params
+  lr: 2.0e-4
+  weight_decay: 0.0
+  milestones: [150000, 250000]
+  gamma: 0.05
+
+  # data-dependent paths & flags
+  default_file_path: /data/guichoux/BEAT2/beat_english_v2.0.0/smplxflame_30/13_lu_0_1_1.npz
+  trans_loss: mse
+  recons_loss: EMAGE
+  body_only: true
+
+  rec_loss_weight:               1.0
+  position_loss_weight:          1.0
+  trans_loss_weight:             0.0
+  velocity_trans_loss_weight:    0.0
+  acceleration_trans_loss_weight: 0.0
+  commit:                        0.2
+  foot_loss_weight:              1.0
+  contact_loss_weight:           1.0
+  velocity_loss_weight:          1.0
+  acceleration_loss_weight:      1.0
+  # 25 body joints = 1.0, 30 hand joints = 0.0
+  joint_weights: [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.] # 1 for body joints, 0.5 for hands
+
+
+

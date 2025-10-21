@@ -1,0 +1,15 @@
+
+# @package _global_
+
+trainer:
+  logger:
+    name: cfm-geo_loss0.8
+  #precision: float32 #bf16-mixed
+
+
+model:
+  vel_weight: 0.05
+  rec_weight: 0.8
+  rec_loss: 
+    _target_: common.utils.losses.GeodesicLoss
+  

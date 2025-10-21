@@ -1,0 +1,62 @@
+# configs/gematcha/default_jz.yaml
+
+hydra:
+  job:
+    chdir: false
+    
+defaults:
+  - decoder: default
+  - cfm: default
+  - optimizer: default
+  - datamodule: beat_latents_jz
+
+
+seed_everything: 123
+
+
+model:
+  _target_: packages.gematcha.src.gematcha.gematcha_trainer.TrainGematcha
+  n_feats_in: 1024
+  n_feats_out: 157
+  pose_dim: 157
+  out_size: 1024
+  decoder:       ${decoder}
+  cfm:           ${cfm}
+  optimizer_cfg: ${optimizer}
+  loss_fn: "mse_loss"
+
+  scheduler_cfg: null
+  joints: 'full_body'
+
+trainer:
+  _target_: pytorch_lightning.Trainer
+  accelerator: gpu
+  precision: '32'    # bf16-mixed
+  strategy: ddp
+  devices: 3
+  use_distributed_sampler: true
+  max_epochs: 500
+  gradient_clip_val: 1.0
+  val_check_interval: 1.0
+  limit_train_batches: 10000
+  accumulate_grad_batches: 1
+  log_every_n_steps: 1
+
+  logger:
+    _target_: pytorch_lightning.loggers.WandbLogger
+    project: GeMatcha
+    name: jz-gematcha-157-mse_multigpu
+    offline: True
+    save_dir: /lustre/fswork/projects/rech/jgk/usj14pf/GEMATCHA
+
+  callbacks:
+    - _target_: pytorch_lightning.callbacks.ModelCheckpoint
+      monitor: val_loss
+      dirpath: /lustre/fswork/projects/rech/jgk/usj14pf/GEMATCHA/checkpoints/${trainer.logger.name}
+      filename: checkpoint_{epoch}_{step}_{val_loss:.4f}
+      save_top_k: 1
+      save_last: true
+
+    - _target_: pytorch_lightning.callbacks.ModelSummary
+      max_depth: 2
+

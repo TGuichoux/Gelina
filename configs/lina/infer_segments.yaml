@@ -1,0 +1,40 @@
+defaults:
+  - _self_         
+  - override hydra/job_logging: disabled
+
+seed: 123
+output_dir: out/segmented_outputs_V2/
+device: cuda
+src_sr: 24000
+tar_sr: 24000
+
+split: 'test'
+
+mode: 'vanilla'
+
+max_dur: 25 # max duration in sec
+min_asr_score: -0.60
+
+# paths -------------------------------------------------
+#ckpt_path: /data/guichoux/MATCHALINA/checkpoints/beat/beat_mls-pt_ltts_mls_ggsp-167M-1qz-lr5e-5/checkpoint_epoch=3_step=3976_val_loss_avg=3.9097.ckpt
+ckpt_path: '/data/guichoux/LINA/checkpoints/lina-beat-pt_ltts-mls-ggsp-167M/checkpoint_epoch=1_step=2661_val_loss=4.3534.ckpt'
+wavtok_cfg: checkpoints/wavtokenizer/wavtokenizer_mediumdata_frame75_3s_nq1_code4096_dim512_kmeans200_attn.yaml
+wavtok_ckpt: checkpoints/wavtokenizer/wavtokenizer_medium_speech_320_24k.ckpt
+prompt_path: null #checkpoints/prompt/687_short/
+
+# synthesis knobs --------------------------------------
+max_seqlen: 2200
+k_speech: 100
+temp_speech: 1.0
+first_greedy_quant_speech: 1
+batch_size: 1
+
+#text: "Right, so we have got this duck here, and we are gonna throw it in the water to see if it floats, because, obviously, if it does, that means she is made of wood, and therefore she must be a witch! It is completely logical, dont question it, because if the duck floats, we will tie her to a chair, set her on fire, and be done with it." #No one can argue with this flawless reasoning!"
+#text: "Eleventy-one years is far too short a time to live among such excellent and admirable hobbits. I don't know half of you half as well as I should like, and I like less than half of you half as well as you deserve."
+#text: "According to the manifold hypothesis, most natural data lies on manifolds with significantly reduced intrinsic dimensionality. Consequently, identifying these manifolds and training diffusion models directly on them can be advantageous due to the lower data dimensionality filler filler filler."
+text: "I have walked into the palaces of kings and queens and into the houses of presidents. And much more. But I could not walk into a hotel in America and get a cup of coffee, and that made me mad. And when I get mad, you know that I open my big mouth."
+#text: "Surely the day will come when color means nothing more than the skin tone, when religion is seen uniquely as a way to speak one's soul, when birth places have the weight of a throw of the dice and all men are born free, when understanding breeds love and brotherhood. Filler Filler."
+
+use_dataset: False
+
+n_samples: 10

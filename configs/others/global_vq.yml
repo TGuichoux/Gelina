@@ -1,0 +1,46 @@
+# data_path: "/data/guichoux/BEAT2/beat_english_v2.0.0/smplxflame_30"
+# smplx_model_dir: "EMAGE/smplx_models"
+# face_vq_ckpt: "EMAGE/pretrained_vq/face.bin"
+# upper_vq_ckpt: "EMAGE/pretrained_vq/upper.bin"
+# hands_vq_ckpt: "EMAGE/pretrained_vq/hands.bin"
+# lower_vq_ckpt: "EMAGE/pretrained_vq/lower_foot.bin"
+global_vq_ckpt: "checkpoints/foot.bin"
+
+# face_vq_layers: 2
+# face_vq_strides: [1, 1]
+# face_vq_upsample: [0, 0]
+
+# hands_vq_layers: 2
+# hands_vq_strides: [1, 1]
+# hands_vq_upsample: [0, 0]
+
+# upper_vq_layers: 2
+# upper_vq_strides: [1, 1]
+# upper_vq_upsample: [0, 0]
+
+# lower_vq_layers: 4
+# lower_vq_strides: [1, 1, 1, 1]
+# lower_vq_upsample: [0, 0, 0, 0]
+
+# global_vq_layers: 4
+# global_vq_strides: [1, 1, 1, 1]
+# global_vq_upsample: [0, 0, 0, 0]
+
+
+vae_test_dim: 61
+vae_length: 256
+vae_layer: 4
+strides: [1, 1, 1, 1]
+upsample: [0,0,0,0]
+
+e_name: "encoder_name_not_used"
+ori_joints: "beat_smplx_joints"
+tar_joints: "beat_smplx_full"
+pose_fps: 30
+vae_codebook_size: 256
+vae_quantizer_lambda: 1.0
+push_repo_id: "TeoGchx/BEAT_HML3D_whisper_wavtokenizer_motokenizer_emage_30"
+split: "test"
+ddp: false
+gpus: [0]
+

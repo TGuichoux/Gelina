@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=64", "wheel", "cython>=0.29", "numpy<2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "matcha"
+version = "0.1.0"
+description = "Matcha-TTS"
+readme = "README.md"
+requires-python = ">=3.10"
+
+[tool.setuptools]
+package-dir = {"" = "."}
+include-package-data = true
+
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["matcha*", "configs*"]
+exclude = ["notebooks*", "docs*", "examples*", "scripts*", "tests*"]
+
+[tool.setuptools.package-data]
+"configs" = ["**/*.yaml", "**/*.yml", "**/*.json"]
+"matcha"  = ["**/*.yaml", "**/*.yml", "**/*.json", "**/*.txt"]

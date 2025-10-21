@@ -1,0 +1,21 @@
+# configs/gematcha/datamodule/beat_latents.yaml
+_target_: packages.common.src.common.data.smpldataset.SmplMotionDataModule
+
+path: ""                        
+rep: rot6d
+hf_repo: TeoGchx/beat_with_latents
+n_frames: 16
+train_batch_size: 256
+val_batch_size: 32
+num_workers: 16
+orig_fps: 30
+target_fps: 20
+dataset_name: beat_latents-v3
+root_path: /lustre/fswork/projects/rech/jgk/usj14pf/
+shuffle_train: true
+save_processed: true
+shuffle_val: true
+normalize: false
+reload_dataset: false
+normalize_trans: false
+val_split: 0.1

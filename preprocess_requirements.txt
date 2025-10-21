@@ -1,0 +1,4 @@
+pytorch_lightning
+datasets[audio]==4.1.1
+whisperx
+hydra-core

@@ -1,0 +1,69 @@
+rec_loss_weight:              1.0
+position_loss_weight:         1.0
+trans_loss_weight:            0.0
+velocity_trans_loss_weight:   0.0
+acceleration_trans_loss_weight: 0.0
+commit:                       0.2
+foot_loss_weight:             1.0
+contact_loss_weight:          1.0
+velocity_loss_weight:         1.0
+acceleration_loss_weight:     1.0
+
+# 55 values: 1 for body, 0 for hands
+joint_weights:
+  - 1 # ×25 body
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 0 # ×30 hands
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0

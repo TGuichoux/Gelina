@@ -1,0 +1,7 @@
+defaults:
+  - /datamodule: old_beat_latents   
+  - _self_
+
+trainer:
+  logger:
+    name: cfm-old-latents

@@ -1,0 +1,14 @@
+_target_: packages.common.src.common.data.groupdataset.GroupDataModule
+
+dataset_names: ["llm_nemo"]
+hf_repos: ["theodorr/llm_nemo_wavtokenizer_long"]
+save_dir: /data/guichoux/
+selected_columns: ["audio_token", "text", "audio_duration"]
+quant_layer_speech: [0]
+token_by_batch: 15000
+n_buckets: 10
+num_workers: 0
+rvq_pattern: delay_rvq
+collate_fn: speech
+tokenizer_file: checkpoints/bpe256.json
+save_to_disk: false

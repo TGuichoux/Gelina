@@ -1,0 +1,38 @@
+
+# @package _global_
+
+trainer:
+  logger:
+    name: beat-pt_ltts_mls_ggsp_random_motion-167M-1qz-lr5e-5
+  callbacks:
+    - _target_: pytorch_lightning.callbacks.ModelCheckpoint
+      monitor: val_loss_avg
+      dirpath: checkpoints/${trainer.logger.name}
+      filename: checkpoint_{epoch}_{step}_{val_loss_avg:.4f}
+      save_top_k: 1
+      save_last: true
+    - _target_: pytorch_lightning.callbacks.ModelSummary
+      max_depth: 2
+      
+model:
+  loss_weight: {'speech': 1.0, 'motion': 1.0}
+  n_training_steps: 300000
+  pe_mode: 'none'
+  learning_rate: 5e-5
+  load_weights: 'checkpoints/gelina_ltts_mls_ggsp_random_100kstep_speech_loss4.4371.ckpt'
+  quant_layer_motion: [0]
+  logits_head_motion: 
+    n_quant: 1
+
+datamodule:
+  dataset_names: ["beat_tokenized_motion_hf"]
+  hf_repos: [""]
+  save_dir: /data/guichoux/
+  mixing: 'concat'
+  token_by_batch: 15000
+  collate_fn: speech_motion
+  selected_columns: ["text","audio_token","audio_duration", "motion_token"] 
+  num_workers: 8
+  max_dur: 30.0
+  quant_layer_motion: [0]
+

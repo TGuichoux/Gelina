@@ -1,0 +1,20 @@
+dist:
+  enabled: true
+  backend: "nccl"
+
+
+
+device: "cuda:0"
+
+model:
+  checkpoint: 'checkpoints/gelina_beat_ft_epoch=2_step=2571_val_loss_avg=3.9271-local.ckpt'
+  
+splits: ["train", "val"]
+writer_batch_size: 16
+batch_size: 1
+num_workers: 16
+
+root_dir: "/data/guichoux/"
+dataset_name: "beat_tokenized_motion_hf"
+hf_repo: "null"
+

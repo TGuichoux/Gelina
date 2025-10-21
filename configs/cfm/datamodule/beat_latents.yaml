@@ -1,0 +1,27 @@
+# configs/cfm/datamodule/beat_latents.yaml
+_target_: packages.common.src.common.data.smpldataset.SmplMotionDataModule
+
+
+root_dir: /data/guichoux/
+rep: rot6d
+hf_repos: [null]
+dataset_names: ['beat_with_latents']
+
+selected_columns: ['motion', 'motion_latents']
+
+n_frames: 32
+train_batch_size: 256
+val_batch_size: 32
+num_workers: 24
+orig_fps: 30
+target_fps: 20
+downsample_factor: 4
+
+shuffle_train: true
+shuffle_val: true
+
+normalize: false
+normalize_trans: false
+
+save_processed: true
+reload_dataset: false

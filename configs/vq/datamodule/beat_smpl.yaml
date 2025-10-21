@@ -1,0 +1,28 @@
+# configs/gematcha/datamodule/beat_latents.yaml
+_target_: packages.common.src.common.data.smpldataset.SmplMotionDataModule
+
+
+root_dir: /data/guichoux/
+rep: rot6d
+hf_repos: [null]
+dataset_names: ['beat_tokenized_hf']
+
+selected_columns: ['motion']
+
+n_frames: 64
+train_batch_size: 128
+val_batch_size: 32
+num_workers: 24
+orig_fps: 30
+target_fps: 20
+
+shuffle_train: true
+shuffle_val: true
+
+normalize: false
+normalize_trans: false
+
+save_processed: true
+reload_dataset: false
+
+merge_train_additional: False

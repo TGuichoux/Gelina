@@ -1,0 +1,19 @@
+_target_: packages.common.src.common.data.groupdataset.GroupDataModule
+
+dataset_names: ["beat_motok_smpl_body_short"]
+hf_repos: ["TeoGchx/BEAT_HML3D_whisper_wavtokenizer_smpl_motokenizer_body-V2"]
+save_dir: /data/guichoux/
+selected_columns: ["text","audio_token","audio_duration","motion_token","motion_duration"]
+
+quant_layer_speech: [0]
+quant_layer_motion: [0, 1, 2, 3, 4, 5]
+speech_rate_hz: 75
+motion_rate_hz: 5
+token_by_batch: 15000
+n_buckets: 10
+num_workers: ${cpu_minus1:}
+rvq_pattern: parallel_rvq
+collate_fn: speech_motion
+tokenizer_file: checkpoints/bpe256.json
+save_to_disk: True
+val_size: 0.01

@@ -1,0 +1,11 @@
+
+# @package _global_
+
+trainer:
+  logger:
+    name: cfm-l1-fixed
+
+model:
+  loss_fn: l1_loss
+
+  

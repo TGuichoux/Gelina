@@ -1,0 +1,64 @@
+defaults:
+  - _self_
+  - override hydra/job_logging: disabled
+
+# General ------------------------------------------------
+seed: null         # we used 123 for our experiments
+device: cuda
+output_dir: out/streaming
+split: 'test'
+mode: 'vanilla'
+n_samples: 1000
+
+# Data & examples ---------------------------------------
+src_sr: 24000
+tar_sr: 24000
+hand_pose_file: 'checkpoints/hands_pose.npy'
+min_asr_score: -0.60
+
+# Checkpoints & configs ---------------------------------
+ckpt_path: 'checkpoints/gelina_beat_ft_epoch=2_step=2571_val_loss_avg=3.9271-local.ckpt'
+motion_vq_ckpt: checkpoints/vq_beat_V3-body_only-epoch=06-val_loss_rec=0.03.ckpt
+motion_vq_cfg: configs/vq/model/default.yaml
+global_vq_cfg: configs/others/global_vq.yml
+cfm_path: checkpoints/cfm-32-3a100-stream-32-fixed-8seed.ckpt 
+wavtok_cfg: checkpoints/wavtokenizer/wavtokenizer_mediumdata_frame75_3s_nq1_code4096_dim512_kmeans200_attn.yaml
+wavtok_ckpt: checkpoints/wavtokenizer/wavtokenizer_medium_speech_320_24k.ckpt
+example_file: checkpoints/example_files/2_scott_0_10_10.npz
+prompt_path: checkpoints/prompt/687_short/
+
+
+# Generation settings -----------------------------------
+trans: estimate
+n_steps: 100
+guidance_scale: 1.0
+cfm_temp: 1.0
+cfg: true
+solver: euler
+streaming: False
+
+# Inference knobs ---------------------------------------
+max_seqlen: 2200
+batch_size: 1
+k_speech: 100
+k_motion: 40
+temp_speech: [1.0]
+temp_motion: [1.0]
+first_greedy_quant_speech: 1
+first_greedy_quant_motion: 1
+mask_motion_tokens: false
+residuals: 1
+zero_trans: false
+zero_hands: true
+seed_pose: 'use_prompt'
+n_frames_seed: 8
+motion_up: 4 # 5 tokens/s and motion fps at 20
+speech_up: 320 # 75 tokens/s and speech at 24Khz
+speech_rate: 24000
+speech_buffer_size: 300
+motion_buffer_size: 20
+
+text: "I have walked into the palaces of kings and queens and into the houses of presidents. And much more. But I could not walk into a hotel in America and get a cup of coffee, and that made me mad. And when I get mad, you know that I open my big mouth."
+
+
+use_dataset: False

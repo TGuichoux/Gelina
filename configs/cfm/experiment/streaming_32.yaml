@@ -1,0 +1,16 @@
+
+# @package _global_
+
+trainer:
+  logger:
+    name: cfm-geo_loss0.8-streaming
+  #precision: float32 #bf16-mixed
+
+
+model:
+  n_frames_seed: 8  # Number of seed frames to use for conditioning
+  vel_weight: 0.05
+  rec_weight: 0.8
+  seed_dropout: 0.05 # Probability of dropping seed pose conditioning
+  rec_loss: 
+    _target_: common.utils.losses.GeodesicLoss

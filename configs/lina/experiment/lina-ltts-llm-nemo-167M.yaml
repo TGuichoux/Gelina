@@ -1,0 +1,13 @@
+
+# @package _global_
+
+trainer:
+  logger:
+    name: lina-ltts-llm-nemo-167M
+
+datamodule:
+  dataset_names: ["llm_nemo", "ltts_hf"]
+  hf_repos: ["theodorr/llm_nemo_wavtokenizer_long", "theodorr/ltts_wavtokenizer"]
+  save_dir: /data/guichoux/
+  mixing: 'concat'
+  token_by_batch: 50000

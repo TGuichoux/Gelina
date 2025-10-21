@@ -1,0 +1,19 @@
+
+# @package _global_
+
+trainer:
+  logger:
+    name: lina-ltts-mls-ggsp-167M-continue
+
+model:
+  load_weights: '/data/guichoux/LINA/checkpoints/lina-ltts-mls-ggsp-167M/checkpoint_epoch=13_step=140000_val_loss=4.4974.ckpt'
+
+datamodule:
+  dataset_names: ["mls_nemo", "ltts_hf", "ggsp"]
+  hf_repos: ["", "theodorr/ltts_wavtokenizer", "theodorr/gigaspeech_xl_wavtokenizer"] # no HF path for mls, as loaded in builder function
+  mixing: 'concat'
+  token_by_batch: 50000
+  selected_columns: ["text","audio_token","audio_duration"] # motion_token are added in collate
+  num_workers: 8
+  val_size: 0.005
+  val_batch_size: 8

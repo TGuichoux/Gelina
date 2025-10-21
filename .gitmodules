@@ -1,0 +1,22 @@
+[submodule "MatchaTTS"]
+	path = MatchaTTS
+	url = https://github.com/shivammehta25/Matcha-TTS.git
+[submodule "external/Matcha-TTS"]
+	path = external/Matcha-TTS
+	url = https://github.com/shivammehta25/Matcha-TTS.git
+[submodule "external/PantoMatrix"]
+	path = external/PantoMatrix
+	url = https://github.com/PantoMatrix/PantoMatrix.git
+
+[submodule "external/WavTokenizer"]
+	path = external/WavTokenizer
+	url = https://github.com/jishengpeng/WavTokenizer.git
+[submodule "external/flash_linear_attention"]
+	path = external/flash_linear_attention
+	url = https://github.com/fla-org/flash-linear-attention.git
+[submodule "external/causal-conv1d"]
+	path = external/causal-conv1d
+	url = https://github.com/Dao-AILab/causal-conv1d.git
+[submodule "external/pytorch_softdtw_cuda"]
+	path = external/pytorch_softdtw_cuda
+	url = https://github.com/Maghoumi/pytorch-softdtw-cuda.git

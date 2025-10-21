@@ -1,0 +1,13 @@
+
+# @package _global_
+
+trainer:
+  logger:
+    name: cfm-uncond-fixed
+
+model:
+  cond_dropout: 1.0
+  rec_weight: 0.0
+  vel_weight: 0.0
+
+  

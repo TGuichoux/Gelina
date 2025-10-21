@@ -1,0 +1,16 @@
+# external/WavTokenizer/pyproject.toml
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]   # modern, PEP 621-aware setuptools
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "WavTokenizer"
+version = "0.0.3"
+description = "Tokenizer/decoder utilities shipped as a sub-module."
+authors = [{ name = "WavTokenizer contributors" }]
+readme = "README.md"
+requires-python = ">=3.8"
+
+[tool.setuptools.packages.find]
+where = ["."]
+exclude = ["tests*", "docs*"]

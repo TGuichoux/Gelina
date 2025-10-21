@@ -1,0 +1,19 @@
+
+# @package _global_
+
+trainer:
+  logger:
+    name: lina-beat-pt_ltts-mls-ggsp-167M
+
+model:
+  load_weights: '/data/guichoux/LINA/checkpoints/lina-ltts-mls-ggsp-167M-continue/last.ckpt'
+
+datamodule:
+  dataset_names: ["beat_motok_smpl_body_short"]
+  hf_repos: ["TeoGchx/BEAT_HML3D_whisper_wavtokenizer_smpl_motokenizer_body-V2"]
+  mixing: 'concat'
+  token_by_batch: 10000
+  selected_columns: ["text","audio_token","audio_duration"] # motion_token are added in collate
+  num_workers: 8
+  val_size: 0.005
+  val_batch_size: 8

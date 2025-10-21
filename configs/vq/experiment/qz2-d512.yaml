@@ -1,0 +1,9 @@
+# @package _global_
+
+trainer:
+  logger:
+    name: qz2-d512
+
+model_trainer:
+  model:
+    num_quantizers: 2

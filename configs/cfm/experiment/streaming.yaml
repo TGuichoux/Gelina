@@ -1,0 +1,21 @@
+
+# @package _global_
+
+trainer:
+  logger:
+    name: cfm-geo_loss0.8-streaming
+  #precision: float32 #bf16-mixed
+
+
+model:
+  n_frames_seed: 8  # Number of seed frames to use for conditioning
+  vel_weight: 0.05
+  rec_weight: 0.8
+  rec_loss: 
+    _target_: common.utils.losses.GeodesicLoss
+
+
+datamodule:
+  n_frames: 10 # (8 + seed pose) target motion sequence will be 8*4 = 32 frames (around 1.5 seconds) and seed pose is 4 frames
+  dataset_names: ['beat_latents-v3-8_seed']
+  train_batch_size: 128

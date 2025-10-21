@@ -1,0 +1,20 @@
+defaults:  
+  - _self_  
+  - override hydra/hydra_logging: disabled  
+  - override hydra/job_logging: disabled  
+  
+hydra:  
+  output_subdir: null  
+  run:  
+    dir: .
+
+hf_repo: "TeoGchx/BEAT2-english-short"
+private: true
+hf_token: null  # or set HUGGINGFACE_HUB_TOKEN environment variable
+root_dir: "/data/guichoux/BEAT2/beat_english_v2.0.0"
+save_path: /data/guichoux/beat_hf
+save_path_2: /data/guichoux/beat_transcribed_hf
+model: "large-v2" # One can use large-v3 for better transcription quality. Takes considerably more time though.
+num_proc: 8
+writer_batch_size: 1000
+device: "cpu" # If you have a GPU with Cuda 12.1 support, you can use "cuda" here for faster processing.
