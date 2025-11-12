@@ -4,9 +4,7 @@ import hydra
 from omegaconf import DictConfig
 from common.data.data_utils import normalize, concat_segments
 import torch
-from external.WavTokenizer.encoder.utils import convert_audio
 import torchaudio
-from external.WavTokenizer.decoder.pretrained import WavTokenizer
 from transformers import AutoProcessor
 import whisperx
 
