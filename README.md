@@ -1,7 +1,8 @@
 # GELINA: Unified Speech-Gesture Synthesis via Interleaved Token Prediction 🎙️🙌
 
 **Téo Guichoux**, **Théodor Lemerle**, **Shivam Mehta**, **Jonas Beskow**, **Gustave Eje Henter**, **Laure Soulier**, **Catherine Pelachaud**, **Nicolas Obin**
-> **Accepted at ICASSP (Oral).** 
+> **Accepted at ICASSP (Oral) 🥳.** 
+
 > **Talk and move with one model.**  
 > **GELINA** is a unified autoregressive model that generates **natural speech and synchronized 3D gestures** by interleaving tokens in a single stream.
 
