@@ -25,3 +25,5 @@ configs/lina/llm_nemo-GLA-d1024-l6-lr2e-4.yml
 out/bash/
 .vscode/*
 debug.py
+save_prompt.py
+out/prompts

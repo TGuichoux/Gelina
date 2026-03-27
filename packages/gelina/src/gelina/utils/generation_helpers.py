@@ -44,10 +44,10 @@ def _prepare_prompt(cfg, framerate_factor=15, speech_tokens=None, motion_tokens=
 
 	# load speech and motion tokens
 	if speech_tokens is None:
-		speech_tokens = torch.load(os.path.join(cfg.prompt_path, 'speech_tokens.pth'))
+		speech_tokens = torch.load(os.path.join(cfg.prompt_path_speech, 'speech_tokens.pth'))
 
 	if motion_tokens is None:
-		motion_tokens = torch.load(os.path.join(cfg.prompt_path, 'motion_tokens.pth')).transpose(0,1) + 3  # shift motion IDs
+		motion_tokens = torch.load(os.path.join(cfg.prompt_path_motion, 'motion_tokens.pth')).transpose(0,1) + 3  # shift motion IDs
 	else:
 		motion_tokens +=3 # shift motion IDs
 
