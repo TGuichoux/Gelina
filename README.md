@@ -227,11 +227,13 @@ with the proper config; it will instantiate the Datamodule and save the dataset 
 <summary><strong>Cite us</strong> (BibTeX)</summary>
 
 ```bibtex
-@misc{guichoux2025gelinaunifiedspeechgesture,
-  title         = {GELINA: Unified Speech and Gesture Synthesis via Interleaved Token Prediction},
-  author        = {T{\'e}o Guichoux and Th{\'e}odor Lemerle and Shivam Mehta and Jonas Beskow and Gustave Eje Henter and Laure Soulier and Catherine Pelachaud and Nicolas Obin},
-  year          = {2025},
-  eprint        = {2510.12834},
-  archivePrefix = {arXiv},
-  url           = {https://arxiv.org/abs/2510.12834}
-}
+@INPROCEEDINGS{11464562,
+  author={Guichoux, Téo and Lemerle, Théodor and Mehta, Shivam and Beskow, Jonas and Henter, Gustav Eje and Soulier, Laure and Pelachaud, Catherine and Obin, Nicolas},
+  booktitle={ICASSP 2026 - 2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 
+  title={Gelina: Unified Speech and Gesture Synthesis Via Interleaved Token Prediction}, 
+  year={2026},
+  volume={},
+  number={},
+  pages={16122-16126},
+  keywords={Radio broadcasting;Frequency modulation;Contacts;Codecs;Modulation;Radio broadcasting;Frequency modulation;Radio access networks;Regional area networks;Protocols;Text-to-speech (TTS);co-speech gesture generation;unified multimodal synthesis;autoregressive transformers;flow-matching;Human behavior synthesis},
+  doi={10.1109/ICASSP55912.2026.11464562}}
