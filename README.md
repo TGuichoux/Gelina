@@ -1,6 +1,6 @@
 # GELINA: Unified Speech-Gesture Synthesis via Interleaved Token Prediction 🎙️🙌
 
-**Téo Guichoux**, **Théodor Lemerle**, **Shivam Mehta**, **Jonas Beskow**, **Gustave Eje Henter**, **Laure Soulier**, **Catherine Pelachaud**, **Nicolas Obin**
+**Téo Guichoux**, **Théodor Lemerle**, **Shivam Mehta**, **Jonas Beskow**, **Gustav Eje Henter**, **Laure Soulier**, **Catherine Pelachaud**, **Nicolas Obin**
 > **Accepted at ICASSP (Oral) 🥳.** 
 
 > **Talk and move with one model.**  
